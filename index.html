@@ -1,0 +1,91 @@
+<!doctype html>
+<html ng-app="angular-s3-upload">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Angular AWS S3 Upload</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="components/toastr/toastr.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- JavaScript Libs -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>   
+  <script src="/components/angular/angular.js"></script> 
+  <script src="/components/toastr/toastr.min.js"></script>    
+  <script src="/components/aws-sdk/aws-sdk.js"></script> 
+
+  <!-- Our JavaScript -->
+  <script src="/js/application.js"></script> 
+  <script src="/js/controllers.js"></script>   
+  <script src="/js/services.js"></script>  
+  <script src="/js/directives.js"></script>  
+</head>
+<body ng-controller="UploadController">
+  <div class="container-fluid">
+    <div class="page-header no-top-marg">
+      <div class="fr author">
+        <a target="_blank" href="http://www.cheynewallace.com">
+          <span>By Cheyne Wallace</span>
+          <img alt="By Cheyne Wallace" class="img-circle left-marg-10" height="40" src="https://secure.gravatar.com/avatar/cf0414cc7a83fabb2b0e6cb79e11e5a5.jpg?s=40" width="40">
+        </a>
+      </div>
+      <h1>AngularJS To S3 Upload <small>With AWS JS SDK</small></h1>
+    </div>
+    <div class="row">
+      <!-- AWS Details-->
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Step 1: Input Your AWS Details</h3>
+          </div>
+          <div class="panel-body">
+            <div class="input-group bottom-marg-10">
+              <span class="input-group-addon">ACCESS KEY</span>
+              <input ng-model="creds.access_key" type="text" class="form-control" placeholder="2992SD29299">
+            </div>
+            <div class="input-group bottom-marg-10">
+              <span class="input-group-addon">SECRET KEY</span>
+              <input ng-model="creds.secret_key" type="text" class="form-control" placeholder="AKS72628SE28">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon">BUCKET</span>
+              <input ng-model="creds.bucket" type="text" class="form-control" placeholder="my_upload_bucket">
+            </div>
+          </div>
+        </div>
+      </div> 
+
+      <!-- The Upload Form -->
+      <div class="col-md-8">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <select class="fr" ng-model="sizeLimit">
+              <option value="5292880">5MB Upload Limit</option>
+              <option value="10585760">10MB Upload Limit</option>
+              <option value="15878640">15MB Upload Limit</option>              
+            </select>
+            <h3 class="panel-title">Step 2: Upload The File</h3>
+          </div>
+          <div class="panel-body">
+
+            <!-- Progress Bar -->
+            <div class="progress" ng-show="uploadProgress > 0">
+              <div class="progress-bar" role="progressbar" aria-valuenow="{{ uploadProgress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ uploadProgress }}%;">
+                {{ uploadProgress }}%
+              </div>
+            </div>
+
+            <input class="bottom-marg-10" type="file" name="file" file></input>
+            <a class="btn btn-primary btn-block btn-lg" ng-click="upload()">Upload</a>
+          </div>
+        </div>
+      </div>     
+    </div>
+  </div>    
+        
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "angular-s3-upload",
+    "dependencies": {
+    "angular": "~1.2.19",
+    "bootstrap": "~3.2.0",
+    "toastr": "~2.0.3"    
+  }
+}
