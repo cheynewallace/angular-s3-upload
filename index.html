@@ -71,21 +71,54 @@
             <h3 class="panel-title">Step 2: Upload The File</h3>
           </div>
           <div class="panel-body">
-
+            <input class="bottom-marg-15" type="file" name="file" file></input>
             <!-- Progress Bar -->
-            <div class="progress" ng-show="uploadProgress > 0">
+            <div class="progress">
               <div class="progress-bar" role="progressbar" aria-valuenow="{{ uploadProgress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ uploadProgress }}%;">
-                {{ uploadProgress }}%
+                {{ uploadProgress == 0 ? '' : uploadProgress + '%' }}
               </div>
-            </div>
-
-            <input class="bottom-marg-10" type="file" name="file" file></input>
+            </div>            
             <a class="btn btn-primary btn-block btn-lg" ng-click="upload()">Upload</a>
           </div>
         </div>
       </div>     
     </div>
-  </div>    
-        
+    <div class="row">     
+      <div class="col-md-12"> 
+        <hr/>       
+        <h3>Features</h3>
+        <ul>
+          <li>Creates Unique Bucket Object Name</li>
+          <li>File Input Directive Binds Attributes To $scope.file</li>
+          <li>Validates File Existence</li>
+          <li>Validates File Size (Use Select Box To Test)</li>
+          <li>Validates AWS Credentials</li>
+        </ul>
+        <hr/>
+        <h3>IAM Policy Warning</h3>
+        <p>
+          Please make sure that if you use this code you create an appropriate IAM account policy to prevent mis-use. Example, a policy like the following would only allow PUT access to the bucket for a specific IAM user. You could also set the bucket objects to automatically expire after 24 hours which would prevent people flooding your account.
+        </p>
+
+<pre class="top-marg-10">
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt126637111000",
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::your_bucket_name"
+      ]
+    }
+  ]
+}</pre>
+
+      </div>
+    </div>
+  </div>          
 </body>
 </html>
