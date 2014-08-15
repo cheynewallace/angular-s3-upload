@@ -2,6 +2,5 @@
 
 var app = angular.module('angular-s3-upload', [
     'controllers',
-    'directives',
-    'services'
+    'directives'
 ]);
