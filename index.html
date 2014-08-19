@@ -105,19 +105,19 @@
           In order for the demo to work, you will need to add a CORS policy to your AWS bucket to allow uploads from this page (or from your local machine if using the local repo).  Details on how to add this policy can found <a target="_blank" href="http://www.cheynewallace.com/uploading-to-s3-with-angularjs">in this article, under the CORS section</a><br/>
           Here's a sample policy that you can use to test this demo app
 <pre class="top-marg-10">
-<?xml version="1.0" encoding="UTF-8"?>
-<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-    <CORSRule>
-        <AllowedOrigin>http://localhost:8000</AllowedOrigin>
-        <AllowedOrigin>http://cheynewallace.github.io</AllowedOrigin>
-        <AllowedMethod>PUT</AllowedMethod>
-        <MaxAgeSeconds>3000</MaxAgeSeconds>
-        <ExposeHeader>x-amz-server-side-encryption</ExposeHeader>
-        <ExposeHeader>x-amz-request-id</ExposeHeader>
-        <ExposeHeader>x-amz-id-2</ExposeHeader>
-        <AllowedHeader>*</AllowedHeader>
-    </CORSRule>
-</CORSConfiguration>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"&gt;
+    &lt;CORSRule&gt;
+        &lt;AllowedOrigin&gt;http://localhost:8000&lt;/AllowedOrigin&gt;
+        &lt;AllowedOrigin&gt;http://cheynewallace.github.io&lt;/AllowedOrigin&gt;
+        &lt;AllowedMethod&gt;PUT&lt;/AllowedMethod&gt;
+        &lt;MaxAgeSeconds&gt;3000&lt;/MaxAgeSeconds&gt;
+        &lt;ExposeHeader&gt;x-amz-server-side-encryption&lt;/ExposeHeader&gt;
+        &lt;ExposeHeader&gt;x-amz-request-id&lt;/ExposeHeader&gt;
+        &lt;ExposeHeader&gt;x-amz-id-2&lt;/ExposeHeader&gt;
+        &lt;AllowedHeader&gt;*&lt;/AllowedHeader&gt;
+    &lt;/CORSRule&gt;
+&lt;/CORSConfiguration&gt;
 </pre>
         </p>
         <hr/>
