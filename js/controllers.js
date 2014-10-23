@@ -8,10 +8,10 @@ controllers.controller('UploadController',['$scope', function($scope) {
   $scope.creds          = {};
 
   $scope.upload = function() {
-    var bucket = new AWS.S3({ params: { Bucket: $scope.creds.bucket } });
     AWS.config.update({ accessKeyId: $scope.creds.access_key, secretAccessKey: $scope.creds.secret_key });
-    AWS.config.region = 'us-east-1';    
-
+    AWS.config.region = 'us-east-1';
+    var bucket = new AWS.S3({ params: { Bucket: $scope.creds.bucket } });
+    
     if($scope.file) {
         // Perform File Size Check First
         var fileSize = Math.round(parseInt($scope.file.size));
@@ -34,13 +34,13 @@ controllers.controller('UploadController',['$scope', function($scope) {
             toastr.success('File Uploaded Successfully', 'Done');
 
             // Reset The Progress Bar
-            setTimeout(function() {              
+            setTimeout(function() {
               $scope.uploadProgress = 0;
               $scope.$digest();
             }, 4000);
           }
         })
-        .on('httpUploadProgress',function(progress) {          
+        .on('httpUploadProgress',function(progress) {
           $scope.uploadProgress = Math.round(progress.loaded / progress.total * 100);
           $scope.$digest();
         });
