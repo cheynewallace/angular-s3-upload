@@ -3,7 +3,7 @@
     "dependencies": {
     "angular": "~1.2.19",
     "bootstrap": "~3.2.0",
-    "toastr": "~2.0.3"    
+    "toastr": "~2.0.3",
     "aws-sdk-js": "~2.0.9"
   }
 }
